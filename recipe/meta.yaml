@@ -26,23 +26,15 @@ requirements:
     - jupyter_server >=1.10.1
     - tornado
 
-# E   ModuleNotFoundError: No module named 'repohelpers'
-{% set ignore_tests = " --ignore=tests/test_api.py" %}
-{% set ignore_tests = ignore_tests + " --ignore=tests/test_gitpuller.py" %}
-
+# Unable to tun tests, due to missing repohelpers -> https://pypi.org/project/repo-helper/
 test:
-  source_files:
-    - tests
   imports:
     - nbgitpuller
   commands:
     - pip check
     - gitpuller --help
-    - pytest -v tests {{ ignore_tests }}
   requires:
     - pip
-    - pytest
-    - notebook
 
 about:
   home: https://github.com/jupyterhub/nbgitpuller
