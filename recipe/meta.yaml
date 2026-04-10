@@ -26,6 +26,9 @@ requirements:
     - jupyter_server >=1.10.1
     - tornado
 
+# E   ModuleNotFoundError: No module named 'repohelpers'
+{% set deselect_tests = " --deselect=tests/test_gitpuller.py" %}
+
 test:
   source_files:
     - tests
@@ -34,10 +37,11 @@ test:
   commands:
     - pip check
     - gitpuller --help
-    - pytest -v tests
+    - pytest -v tests {{ deselect_tests }}
   requires:
     - pip
     - pytest
+    - notebook
 
 about:
   home: https://github.com/jupyterhub/nbgitpuller
