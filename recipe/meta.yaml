@@ -28,7 +28,7 @@ requirements:
     # https://github.com/jupyter/jupyter-packaging#as-a-build-requirement for
     # more relevant details.
     #
-    - jupyter-packaging
+    - jupyter-packaging 0.12.3
   run:
     - python
     - jupyter_server >=1.10.1
