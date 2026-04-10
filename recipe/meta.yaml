@@ -27,7 +27,8 @@ requirements:
     - tornado
 
 # E   ModuleNotFoundError: No module named 'repohelpers'
-{% set deselect_tests = " --deselect=tests/test_gitpuller.py" %}
+{% set ignore_tests = " --ignore=tests/test_api.py" %}
+{% set ignore_tests = ignore_tests + " --ignore=tests/test_gitpuller.py" %}
 
 test:
   source_files:
@@ -37,7 +38,7 @@ test:
   commands:
     - pip check
     - gitpuller --help
-    - pytest -v tests {{ deselect_tests }}
+    - pytest -v tests {{ ignore_tests }}
   requires:
     - pip
     - pytest
